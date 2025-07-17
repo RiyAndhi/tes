@@ -1,75 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suitmedia - Ideas</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="img/logo.png" alt="Suitmedia Logo">
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#">Work</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#" class="active">Ideas</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger-menu" aria-label="Toggle navigation menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ideas - Suitmedia</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ff6b35",
+              secondary: "#2c3e50",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+
+      .diagonal-bottom::after {
+        content: '';
+        position: absolute;
+        bottom: -05px;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: white;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      }
+
+      .header-solid {
+        background-color: #ff6b35;
+        transition: background-color 0.4s ease;
+      }
+
+      .header-visible {
+        background-color: rgba(255, 107, 53, 0.75);
+        backdrop-filter: blur(8px);
+        transform: translateY(0);
+        opacity: 1;
+        transition: background-color 0.4s ease, transform 0.4s ease;
+      }
+
+      .header-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .lazy-image {
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .lazy-image.loaded {
+        opacity: 1;
+      }
+
+      #mobile-nav {
+        background-color: rgba(255, 107, 53, 0.96);
+        animation: fadeInMobileNav 0.2s ease-in-out;
+      }
+
+      @keyframes fadeInMobileNav {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #mobile-nav a {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        color: white;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      #mobile-nav a:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+
+      #mobile-nav a.border-b-2 {
+        border-bottom: 2px solid white;
+        font-weight: 600;
+      }
+
+      #banner {
+        transition: background-position 0.2s ease-out;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white">
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <img src="img/logo.png" alt="Suitmedia Logo" class="h-8 filter brightness-0 invert" />
+
+          <nav class="hidden md:flex items-center space-x-8">
+            <a href="#" class="group relative text-white">
+              Work
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#" class="group relative text-white">
+              About
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#" class="group relative text-white">
+              Services
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#" class="text-white border-b-2 border-white pb-1">
+              Ideas
+            </a>
+            <a href="#" class="group relative text-white">
+              Careers
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#" class="group relative text-white">
+              Contact
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </nav>
+
+          <button id="hamburger" class="md:hidden text-white">
+            <i id="hamburger-icon" class="ri-menu-line text-2xl"></i>
+          </button>
         </div>
+
+        <nav id="mobile-nav" class="md:hidden hidden w-full flex flex-col mt-4 space-y-1 text-white px-2 py-4">
+          <a href="#" class="hover:text-orange-200 font-medium transition">Work</a>
+          <a href="#" class="hover:text-orange-200">About</a>
+          <a href="#" class="hover:text-orange-200">Services</a>
+          <a href="#" class="border-b-2 border-white pb-1">Ideas</a>
+          <a href="#" class="hover:text-orange-200">Careers</a>
+          <a href="#" class="hover:text-orange-200">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Ideas</h1>
-                <p>Innovation begins with imagination.</p>
-            </div>
-        </section>
+      <section id="banner" class="relative h-96 overflow-hidden diagonal-bottom bg-center bg-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="relative z-10 h-full flex items-center justify-center text-center">
+        <div id="banner-content">
+          <h1 class="text-5xl font-bold text-white mb-4">Ideas</h1>
+          <p class="text-xl text-white opacity-90">Where all our great things begin</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="articles-section">
-            <div class="controls-container">
-                <div class="results-info" aria-live="polite">-</div>
-                <div class="filters">
-                    <div class="dropdown">
-                        <label for="items-per-page" class="sr-only">Items per page</label>
-                        <select id="items-per-page">
-                            <option value="10">10 per page</option>
-                            <option value="20">20 per page</option>
-                            <option value="50">50 per page</option>
-                        </select>
-                        <span class="arrow"></span>
-                    </div>
-                    <div class="dropdown">
-                        <label for="sort-by" class="sr-only">Sort by</label>
-                        <select id="sort-by">
-                            <option value="newest">Newest</option>
-                            <option value="oldest">Oldest</option>
-                        </select>
-                        <span class="arrow"></span>
-                    </div>
-                </div>
+    <main class="bg-white container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+        <div id="status-text" class="text-gray-600">Showing 1-10 of 100</div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex items-center gap-2">
+            <span class="text-gray-600">Show per page:</span>
+            <div class="relative w-32" id="per-page-dropdown">
+              <button
+                class="w-full flex justify-between items-center border border-gray-300 rounded px-4 py-2 bg-white text-gray-800"
+                onclick="toggleDropdown('per-page')"
+              >
+                <span id="per-page-label">10</span>
+                <i class="ri-arrow-down-s-line text-gray-500"></i>
+              </button>
+              <ul
+                class="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded shadow-md hidden"
+                id="per-page-options"
+              >
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="selectPerPage(10)">10</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="selectPerPage(20)">20</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="selectPerPage(50)">50</li>
+              </ul>
             </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-gray-600">Sort by:</span>
+            <div class="relative w-40" id="sort-dropdown">
+              <button
+                class="w-full flex justify-between items-center border border-gray-300 rounded px-4 py-2 bg-white text-gray-800"
+                onclick="toggleDropdown('sort')"
+              >
+                <span id="sort-label">Newest</span>
+                <i class="ri-arrow-down-s-line text-gray-500"></i>
+              </button>
+              <ul
+                class="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded shadow-md hidden"
+                id="sort-options"
+              >
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="selectSort('-published_at', 'Newest')">Newest</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="selectSort('published_at', 'Oldest')">Oldest</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="articles-grid"></div>
-            <div class="pagination" role="navigation" aria-label="Pagination for articles"></div>
-        </section>
+      <div id="ideas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"></div>
+
+      <div id="pagination" class="flex justify-center items-center gap-2"></div>
     </main>
 
-    <script src="script.js">
-        
+    <script id="header-scroll">
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById("header");
+
+      
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY <= 0) {
+          header.classList.remove("header-visible", "header-hidden");
+          header.classList.add("header-solid");
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          header.classList.remove("header-visible", "header-solid");
+          header.classList.add("header-hidden");
+        } else if (currentScrollY < lastScrollY) {
+          header.classList.remove("header-hidden", "header-solid");
+          header.classList.add("header-visible");
+        }
+
+        lastScrollY = currentScrollY;
+      }
+
+      window.addEventListener("scroll", handleScroll);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        handleScroll();
+      });
     </script>
-</body>
+
+    <script id="parallax-effect">
+      window.addEventListener("scroll", () => {
+      const scrolled = window.pageYOffset;
+      const bannerContent = document.getElementById("banner-content");
+      const banner = document.getElementById("banner");
+
+      const rateText = scrolled * -0.5;
+      const rateBg = scrolled * 0.3;
+
+      if (bannerContent) {
+        bannerContent.style.transform = `translateY(${rateText}px)`;
+      }
+
+      if (banner) {
+        banner.style.backgroundPosition = `center ${rateBg}px`;
+      }
+    });
+    </script>
+
+    <script id="lazy-loading">
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add("loaded");
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      function observeImages() {
+        const lazyImages = document.querySelectorAll(".lazy-image");
+        lazyImages.forEach((img) => imageObserver.observe(img));
+      }
+    </script>
+
+    <script id="api-integration">
+      class IdeasAPI {
+        constructor() {
+          this.baseURL = "https://suitmedia-backend.suitdev.com/api/ideas";
+          this.currentPage = this.getURLParam("page") || 1;
+          this.perPage = this.getURLParam("size") || 10;
+          this.sort = this.getURLParam("sort") || "-published_at";
+          this.totalItems = 0;
+          this.init();
+        }
+
+        getURLParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+        }
+
+        updateURL() {
+          const url = new URL(window.location);
+          url.searchParams.set("page", this.currentPage);
+          url.searchParams.set("size", this.perPage);
+          url.searchParams.set("sort", this.sort);
+          window.history.replaceState({}, "", url);
+        }
+
+        async fetchIdeas() {
+          try {
+            const params = new URLSearchParams();
+            params.append("page[number]", this.currentPage);
+            params.append("page[size]", this.perPage);
+            params.append("sort", this.sort);
+            params.append("append[]", "small_image");
+            params.append("append[]", "medium_image");
+
+            const response = await fetch(`${this.baseURL}?${params.toString()}`, {
+              headers: { Accept: "application/json" },
+            });
+
+            const data = await response.json();
+
+            this.totalItems = data.meta.total;
+            this.renderIdeas(data.data);
+            this.updateStatus();
+            this.renderPagination(data.meta);
+          } catch (error) {
+            console.error("Error fetching ideas:", error);
+          }
+        }
+
+        renderIdeas(ideas) {
+          const grid = document.getElementById("ideas-grid");
+          grid.innerHTML = "";
+          ideas.forEach((idea) => {
+            const card = document.createElement("div");
+            card.className =
+              "bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow";
+
+            const imageUrl =
+              (idea.small_image && idea.small_image.length > 0 && idea.small_image[0].url) ||
+              (idea.medium_image && idea.medium_image.length > 0 && idea.medium_image[0].url) ||
+              "img/noimage.jpg";
+
+            card.innerHTML = `
+              <div class="aspect-[4/3] overflow-hidden">
+                <img 
+                  data-src="${imageUrl}" 
+                  class="lazy-image w-full h-full object-cover object-top"
+                  alt="${idea.title}" 
+                  onerror="this.onerror=null;this.src='img/noimage.jpg';"
+                />
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500 mb-2">${new Date(idea.published_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</h3>
+                <h2 class="font-semibold text-gray-900 line-clamp-3 leading-tight">${idea.title}</h2>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+
+          setTimeout(() => observeImages(), 100);
+        }
+
+        updateStatus() {
+          const start = (this.currentPage - 1) * this.perPage + 1;
+          const end = Math.min(this.currentPage * this.perPage, this.totalItems);
+          document.getElementById("status-text").textContent = `Showing ${start}-${end} of ${this.totalItems}`;
+        }
+
+        renderPagination(meta) {
+          const pagination = document.getElementById("pagination");
+          pagination.innerHTML = "";
+          const totalPages = meta.last_page;
+          const currentPage = parseInt(this.currentPage);
+
+          if (totalPages <= 1) return;
+
+          const prevBtn = document.createElement("button");
+          prevBtn.className = `px-3 py-2 border rounded-md transition
+            ${currentPage === 1
+              ? "text-gray-300 border-gray-200 cursor-not-allowed"
+              : "text-gray-700 border-gray-300 hover:text-primary hover:border-primary"}
+          `;
+          prevBtn.innerHTML = '<i class="ri-arrow-left-s-line"></i>';
+          if (currentPage > 1) prevBtn.onclick = () => this.goToPage(currentPage - 1);
+          pagination.appendChild(prevBtn);
+
+          const createPageBtn = (i, isActive = false) => {
+            const pageBtn = document.createElement("button");
+            pageBtn.className = `px-3 py-2 border rounded-md transition ${
+              isActive
+                ? "bg-primary text-white border-primary"
+                : "text-gray-700 border-gray-300 hover:text-primary hover:border-primary"
+            }`;
+            pageBtn.textContent = i;
+            if (!isActive) pageBtn.onclick = () => this.goToPage(i);
+            pagination.appendChild(pageBtn);
+          };
+
+          const range = [];
+          if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) range.push(i);
+          } else {
+            range.push(1);
+            if (currentPage > 3) range.push("...");
+            const start = Math.max(2, currentPage - 1);
+            const end = Math.min(totalPages - 1, currentPage + 1);
+            for (let i = start; i <= end; i++) range.push(i);
+            if (currentPage < totalPages - 2) range.push("...");
+            range.push(totalPages);
+          }
+
+          range.forEach((i) => {
+            if (i === "...") {
+              const dot = document.createElement("span");
+              dot.className = "px-3 py-2 text-gray-400";
+              dot.textContent = "...";
+              pagination.appendChild(dot);
+            } else {
+              createPageBtn(i, i === currentPage);
+            }
+          });
+
+          const nextBtn = document.createElement("button");
+          nextBtn.className = `px-3 py-2 border rounded-md transition
+            ${currentPage === totalPages
+              ? "text-gray-300 border-gray-200 cursor-not-allowed"
+              : "text-gray-700 border-gray-300 hover:text-primary hover:border-primary"}
+          `;
+          nextBtn.innerHTML = '<i class="ri-arrow-right-s-line"></i>';
+          if (currentPage < totalPages) nextBtn.onclick = () => this.goToPage(currentPage + 1);
+          pagination.appendChild(nextBtn);
+        }
+
+        goToPage(page) {
+          this.currentPage = page;
+          this.updateURL();
+          this.fetchIdeas();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        init() {
+          this.perPage = parseInt(document.getElementById("per-page-label").textContent);
+          this.sort = "-published_at";
+
+          this.updateURL();
+          this.fetchIdeas();
+        }
+      }
+      
+      let api;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        api = new IdeasAPI();
+
+        const banner = document.getElementById("banner");
+        const fallbackImage = 'img/background.jpg';
+        const cmsBannerUrl = '';
+
+        if (cmsBannerUrl && cmsBannerUrl.trim() !== '') {
+          banner.style.backgroundImage = `url('${cmsBannerUrl}')`;
+        } else {
+          banner.style.backgroundImage = `url('${fallbackImage}')`;
+        }
+
+        const menuBtn = document.getElementById("hamburger");
+        const menuIcon = document.getElementById("hamburger-icon");
+        const mobileNav = document.getElementById("mobile-nav");
+
+        menuBtn.addEventListener("click", () => {
+          mobileNav.classList.toggle("hidden");
+          const isOpen = !mobileNav.classList.contains("hidden");
+
+          menuIcon.className = isOpen ? "ri-close-line text-2xl" : "ri-menu-line text-2xl";
+        });
+
+        document.querySelectorAll("#mobile-nav a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileNav.classList.add("hidden");
+            menuIcon.className = "ri-menu-line text-2xl";
+          });
+        });
+      });
+      
+      function toggleDropdown(id) {
+        const dropdown = document.getElementById(`${id}-options`);
+        dropdown.classList.toggle("hidden");
+      }
+
+      function selectPerPage(value) {
+        document.getElementById("per-page-label").textContent = value;
+        document.getElementById("per-page-options").classList.add("hidden");
+        
+        api.perPage = value;
+        api.currentPage = 1;
+        api.updateURL();
+        api.fetchIdeas();
+      }
+
+      function selectSort(value, label) {
+        document.getElementById("sort-label").textContent = label;
+        document.getElementById("sort-options").classList.add("hidden");
+        
+        api.sort = value;
+        api.currentPage = 1;
+        api.updateURL();
+        api.fetchIdeas();
+      }
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("#per-page-dropdown")) {
+          document.getElementById("per-page-options").classList.add("hidden");
+        }
+        if (!e.target.closest("#sort-dropdown")) {
+          document.getElementById("sort-options").classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
 </html>
