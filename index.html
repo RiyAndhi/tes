@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suitmedia - Ideas</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Suitmedia Logo">
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#" class="active">Ideas</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" aria-label="Toggle navigation menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Ideas</h1>
+                <p>Innovation begins with imagination.</p>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="controls-container">
+                <div class="results-info" aria-live="polite">-</div>
+                <div class="filters">
+                    <div class="dropdown">
+                        <label for="items-per-page" class="sr-only">Items per page</label>
+                        <select id="items-per-page">
+                            <option value="10">10 per page</option>
+                            <option value="20">20 per page</option>
+                            <option value="50">50 per page</option>
+                        </select>
+                        <span class="arrow"></span>
+                    </div>
+                    <div class="dropdown">
+                        <label for="sort-by" class="sr-only">Sort by</label>
+                        <select id="sort-by">
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                        </select>
+                        <span class="arrow"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="articles-grid"></div>
+            <div class="pagination" role="navigation" aria-label="Pagination for articles"></div>
+        </section>
+    </main>
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
